@@ -1,0 +1,9 @@
+.App {
+  font-family: monospace;
+  text-align: center;
+  background-color: burlywood;
+  padding: 15px;
+}
+li {
+  list-style-type: none;
+}

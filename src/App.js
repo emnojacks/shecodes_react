@@ -1,20 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import "./styles.css";
+import WeatherSearch from "./WeatherSearch";
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>HelloWorld</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Weather Search</h1>
+       <WeatherSearch />
       </header>
     </div>
   );
