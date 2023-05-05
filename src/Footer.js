@@ -6,7 +6,7 @@ export default function Footer() {
       <p>
         <a
           href="https://github.com/emnojacks/shecodes_react"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Github Repo
