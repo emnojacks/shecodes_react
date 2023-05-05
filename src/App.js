@@ -1,5 +1,6 @@
 import "./App.css";
 import "./styles.css";
+import React from "react";
 import WeatherSearch from "./WeatherSearch";
 import Footer from "./Footer";
 
