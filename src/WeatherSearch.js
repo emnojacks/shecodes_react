@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import DateFormatted from "./DateFormatted";
+import WeatherData from "./WeatherData";
 
 export default function WeatherSearch() {
   //var declarations
@@ -60,19 +61,10 @@ export default function WeatherSearch() {
     return (
       <div>
         {form}
-        <h2>{cityOnScreen}</h2>
-        <DateFormatted date={weather.date} />
-        <ul>
-          <li>Temp: {Math.round(weather.temperature)}°F</li>
-          <li>Wind: {weather.wind} mph</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>
-            <img src={weather.icon} alt="Weather" />
-          </li>
-        </ul>
+        <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
       </div>
     );
   } else {
-    return form;
+    return <div>{form}</div>;
   }
 }
