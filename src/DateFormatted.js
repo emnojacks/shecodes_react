@@ -21,8 +21,8 @@ export default function DateFormatted(props) {
   const day = days[props.date.getDay()];
   const month = mos[props.date.getMonth()];
   const date = props.date.getDate();
-  const hrs = props.date.getHours();
-  const mins = props.date.getMinutes();
+  let hrs = props.date.getHours();
+  let mins = props.date.getMinutes();
 
   if (mins < 10) {
     mins = `0${mins}`;

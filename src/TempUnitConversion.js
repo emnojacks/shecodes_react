@@ -13,11 +13,11 @@ export default function TempUnitConversion(props) {
     e.preventDefault();
     setUnits("imperial");
   }
-
+ 
   if (units === "imperial") {
     return (
       <span>
-        {Math.round(props.weather.temperature)}
+        {(props.temperature)}
         °F |{" "}
         <a
           href="#"
@@ -30,16 +30,17 @@ export default function TempUnitConversion(props) {
       </span>
     );
   } else {
+      let metric = Math.round((props.temperature - 32) * 5 / 9);
     return (
       <span>
-        {Math.round(props.weather.temperature)}
+        {metric}
         <a
           href="#"
           target="_blank"
           rel="noopener noreferrer"
           onClick={convertToImperial}
         >
-          °F
+        °F
         </a>
         | °C
       </span>
