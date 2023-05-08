@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function DateFormatted(props) {
-  console.log(props.date);
   //var decs
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let mos = [

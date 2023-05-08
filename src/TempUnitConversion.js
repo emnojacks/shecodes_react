@@ -13,35 +13,32 @@ export default function TempUnitConversion(props) {
     e.preventDefault();
     setUnits("imperial");
   }
- 
+
   if (units === "imperial") {
     return (
       <span>
-        {(props.temperature)}
-        °F |{" "}
-        <a
+            {props.temperature}{" "}°F |
+        <button
+          className="btn btn-temp"
           href="#"
           target="_blank"
           rel="noopener noreferrer"
           onClick={convertToMetric}
-        >
-          °C
-        </a>
+        >°C</button>
       </span>
     );
   } else {
-      let metric = Math.round((props.temperature - 32) * 5 / 9);
+    let metric = Math.round(((props.temperature - 32) * 5) / 9);
     return (
       <span>
         {metric}
-        <a
+        <button
+          className="btn btn-temp"
           href="#"
           target="_blank"
           rel="noopener noreferrer"
           onClick={convertToImperial}
-        >
-        °F
-        </a>
+        >°F</button>
         | °C
       </span>
     );
