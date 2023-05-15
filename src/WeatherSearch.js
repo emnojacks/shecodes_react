@@ -10,6 +10,7 @@ export default function WeatherSearch() {
   const [city, setCity] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
+  let citySearchBar = document.querySelector("#citySearchBar");
   //have to have another var to display city with res bc city search input updates value onChange
   const [cityOnScreen, setCityOnScreen] = useState("");
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
@@ -28,7 +29,7 @@ export default function WeatherSearch() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault(e);
+    e.preventDefault();
     axios.get(apiURL).then(displayWeather);
   }
 
@@ -50,10 +51,11 @@ export default function WeatherSearch() {
   let form = (
     <form onSubmit={handleSubmit}>
       <input
+        id="citySearchBar"
         type="search"
         placeholder="enter a city"
-        onChange={updateCity}
         className="form-input form-control"
+        onChange={updateCity}
       />
       <button type="submit" className="form-input form-control btn btn-primary">
         Search
@@ -66,7 +68,7 @@ export default function WeatherSearch() {
       <div>
         {form}
         <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
-{/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
+        {/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
         <WeatherForecast city={city} />
       </div>
     );
