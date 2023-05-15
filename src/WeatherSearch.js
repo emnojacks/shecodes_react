@@ -34,7 +34,7 @@ export default function WeatherSearch() {
       .get(apiURL)
       .then(displayWeather)
       .catch((err) => {
-        alert(err.request.statusText);
+        alert(`Sorry, ${err.request.statusText} 😭`);
       });
   }
 
@@ -57,25 +57,36 @@ export default function WeatherSearch() {
 
   let form = (
     <form onSubmit={handleSubmit}>
-      <input
-        id="citySearchBar"
-        type="search"
-        placeholder="enter a city"
-        className="form-input form-control"
-        onChange={updateCity}
-      />
-      <button type="submit" className="form-input form-control btn btn-primary">
-        Search
-      </button>
+      <div className="row">
+        <div className="col-9">
+          <input
+            id="citySearchBar"
+            type="search"
+            placeholder="Enter a city"
+            className="form-input form-control"
+            onChange={updateCity}
+          />
+        </div>
+        <div className="col-3">
+          <button
+            type="submit"
+            className="form-input form-control btn btn-warning"
+          >
+            Search
+          </button>
+        </div>
+      </div>
     </form>
   );
 
   if (loaded) {
     return (
-      <div>
+      <div className="container">
         {form}
+        <br />
         <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
         {/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
+        <br />
         <WeatherForecast
           coordinates={weather.coordinates}
           city={weather.city}

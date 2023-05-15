@@ -31,8 +31,8 @@ export default function DateFormatted(props) {
   }
 
   return (
-    <p>
-      {day} {month} {date} {hrs}:{mins}
-    </p>
+    <div>
+      {day}day &nbsp; {month} {date} &nbsp; {hrs}:{mins}
+    </div>
   );
 }

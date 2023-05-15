@@ -19,15 +19,29 @@ export default function WeatherForecast(props) {
 
   if (loaded) {
     return (
-      <div className="forecast-container">
+      <div className="container">
         <div className="row">
-          <WeatherForecastDay forecast={forecast.daily[0]} />
-          <WeatherForecastDay forecast={forecast.daily[1]} />
-          <WeatherForecastDay forecast={forecast.daily[2]} />
-          <WeatherForecastDay forecast={forecast.daily[3]} />
-          <WeatherForecastDay forecast={forecast.daily[4]} />
-          <WeatherForecastDay forecast={forecast.daily[5]} />
-          <WeatherForecastDay forecast={forecast.daily[6]} />
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[0]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[1]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[2]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[3]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[4]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[5]} />
+          </div>
+          <div className="col">
+            <WeatherForecastDay forecast={forecast.daily[6]} />
+          </div>
         </div>
       </div>
     );
@@ -41,7 +55,7 @@ export default function WeatherForecast(props) {
       .get(apiURL)
       .then(handleResponse)
       .catch((err) => {
-        alert(err.request.statusText);
+        alert(`Sorry, ${err.request.statusText} 😭`);
       });
     return null;
   }

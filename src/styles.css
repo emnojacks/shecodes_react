@@ -1,7 +1,6 @@
 .App .App-header {
-  font-family: monospace;
   text-align: center;
-  background-color: burlywood;
+  background-color: rgb(93, 91, 225);
   padding: 15px;
 }
 li {
@@ -19,5 +18,23 @@ li {
   border-color: transparent;
 }
 .btn-temp {
-  color: blue;
+  color: rgb(209, 181, 248);
+}
+
+.current-weather {
+  text-align: left;
+  font-weight: 400;
+}
+
+.city-on-screen {
+font-size: larger;
+font-weight: bolder;
+}
+
+.daily-temps {
+font-size: medium;
+}
+
+.forecast-container {
+text-align: center;
 }

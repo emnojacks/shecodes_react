@@ -17,14 +17,16 @@ export default function TempUnitConversion(props) {
   if (units === "imperial") {
     return (
       <span>
-            {props.temperature}{" "}°F |
+        {props.temperature} °F |
         <button
           className="btn btn-temp"
           href="#"
           target="_blank"
           rel="noopener noreferrer"
           onClick={convertToMetric}
-        >°C</button>
+        >
+          <strong>°C</strong>
+        </button>
       </span>
     );
   } else {
@@ -38,7 +40,9 @@ export default function TempUnitConversion(props) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={convertToImperial}
-        >°F</button>
+        >
+          <strong>°F</strong>
+        </button>
         | °C
       </span>
     );
