@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.forecast-container {
+border: solid 1px red;
+}

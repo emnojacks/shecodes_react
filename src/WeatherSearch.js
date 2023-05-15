@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import WeatherData from "./WeatherData";
+import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherSearch() {
   //var declarations
@@ -12,8 +13,12 @@ export default function WeatherSearch() {
   //have to have another var to display city with res bc city search input updates value onChange
   const [cityOnScreen, setCityOnScreen] = useState("");
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
+  //shecodes apikey
+  // let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
   let units = "imperial";
   //full apiURL with city, units, and unique key
+  //shecodes apiurl
+  // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   //start funcs
@@ -61,6 +66,8 @@ export default function WeatherSearch() {
       <div>
         {form}
         <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
+{/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
+        <WeatherForecast city={city} />
       </div>
     );
   } else {
