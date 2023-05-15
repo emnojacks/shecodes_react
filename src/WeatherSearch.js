@@ -14,36 +14,43 @@ export default function WeatherSearch() {
   const [cityOnScreen, setCityOnScreen] = useState("");
 
   //start funcs
-
   function updateCity(e) {
     setCity(e.target.value);
   }
 
   function handleSubmit(e) {
-    //open weather key from shecodes
-    let apiKey = "311f1f45fee82242ab4086372ab360f5";
-    let units = "imperial";
+    e.preventDefault();
+    callWeatherAPI();
+  }
+
+  function callWeatherAPI()
+  {
     //shecodes apiurl
     // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
     //open weather api
+    let apiKey = "311f1f45fee82242ab4086372ab360f5";
+    let units = "imperial";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    e.preventDefault();
     axios.get(apiURL).then(displayWeather);
   }
-
+  
   //pass the api json res to display weather func and use object deconstruction to set state of weather obj
   function displayWeather(res) {
-    console.log(res.data);
+    console.log("current weather retrieved");
     setLoaded(true);
     setCityOnScreen(city);
     setWeather({
+      coordinates: res.data.coord,
       temperature: res.data.main.temp,
       wind: res.data.wind.speed,
       humidity: res.data.main.humidity,
       //u can set icon by incl. icons in media or images folder in src and that might be better way if url or docs change
       icon: `https://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`,
       date: new Date(res.data.dt * 1000),
+      city: res.data.name,
+      description: res.data.weather[0].description
     });
+  console.log(res.data);
   }
 
   let form = (
@@ -67,7 +74,7 @@ export default function WeatherSearch() {
         {form}
         <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
         {/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
-        <WeatherForecast city={city} />
+        <WeatherForecast coordinates={weather.coordinates}  city={weather.city} />
       </div>
     );
   } else {

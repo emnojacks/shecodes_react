@@ -52,7 +52,7 @@ export default function WeatherForecast(props) {
     axios
       .get(apiURL)
       .then(handleResponse)
-      .then(console.log("forecast received"));
+      .then(console.log("forecast data received"));
     return null;
   }
 }
