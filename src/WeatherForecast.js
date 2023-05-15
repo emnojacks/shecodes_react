@@ -7,7 +7,6 @@ export default function WeatherForecast(props) {
   //the only thing being received is a city
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
-  console.log(props);
 
   useEffect(() => {
     setLoaded(false);
@@ -17,15 +16,6 @@ export default function WeatherForecast(props) {
     setForecast(res.data);
     setLoaded(true);
   }
-
-  //     if (forecast && props.city !== forecast.city) {
-  //       setCity(props.city)
-  //       axios
-  //           .get(apiURL)
-  //           .then(handleResponse)
-  //           .then(console.log("forecast updated"))
-  //           .then(setLoaded(false));
-  //   }
 
   if (loaded) {
     return (
@@ -42,8 +32,6 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    // old shecodes
-    //    let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
     let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
     let units = "imperial";
     let city = props.city;
@@ -52,7 +40,9 @@ export default function WeatherForecast(props) {
     axios
       .get(apiURL)
       .then(handleResponse)
-      .then(console.log("forecast data received"));
+      .catch((err) => {
+        alert(err.request.statusText);
+      });
     return null;
   }
 }

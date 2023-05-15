@@ -23,20 +23,23 @@ export default function WeatherSearch() {
     callWeatherAPI();
   }
 
-  function callWeatherAPI()
-  {
+  function callWeatherAPI() {
     //shecodes apiurl
     // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
     //open weather api
     let apiKey = "311f1f45fee82242ab4086372ab360f5";
     let units = "imperial";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    axios.get(apiURL).then(displayWeather);
+    axios
+      .get(apiURL)
+      .then(displayWeather)
+      .catch((err) => {
+        alert(err.request.statusText);
+      });
   }
-  
+
   //pass the api json res to display weather func and use object deconstruction to set state of weather obj
   function displayWeather(res) {
-    console.log("current weather retrieved");
     setLoaded(true);
     setCityOnScreen(city);
     setWeather({
@@ -48,9 +51,8 @@ export default function WeatherSearch() {
       icon: `https://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`,
       date: new Date(res.data.dt * 1000),
       city: res.data.name,
-      description: res.data.weather[0].description
+      description: res.data.weather[0].description,
     });
-  console.log(res.data);
   }
 
   let form = (
@@ -74,7 +76,10 @@ export default function WeatherSearch() {
         {form}
         <WeatherData weather={weather} cityOnScreen={cityOnScreen} />
         {/* the forecast component will ONLY display if the first city submission and api call is SUCCESS.  so you don't need to asynchronously call the forecast */}
-        <WeatherForecast coordinates={weather.coordinates}  city={weather.city} />
+        <WeatherForecast
+          coordinates={weather.coordinates}
+          city={weather.city}
+        />
       </div>
     );
   } else {
