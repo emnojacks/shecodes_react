@@ -9,8 +9,7 @@ export default function WeatherData(props) {
       <DateFormatted date={props.weather.date} />
       <ul>
               <li>
-                  Temp: 
-                  <TempUnitConversion temperature={Math.round(props.weather.temperature)} />
+                  Temp: <TempUnitConversion temperature={Math.round(props.weather.temperature)} />
               </li>
         <li>Wind: {props.weather.wind} mph</li>
         <li>Humidity: {props.weather.humidity}%</li>
