@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
   //the only thing being received is a city
-  console.log(props);
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
+  console.log(props);
   let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
   let units = "imperial";
   const [city, setCity] = useState(props.city);
@@ -15,20 +15,27 @@ export default function WeatherForecast(props) {
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
 
   function handleResponse(res) {
-    // console.log(res.data);
-    setCity(props.city)
     setForecast(res.data);
     setLoaded(true);
   }
 
-  //     function updateCity() {
-  //         console.log(forecast.city)
-  //     }
-  // //     if (city !== forecast.city) setLoaded(false);
-  // //   }
+//   useEffect(() => {
+//     setLoaded(false);
+//     console.log("useffect");
+//     console.log(loaded);
+//   }, [props.city]);
+
+  //     if (forecast && props.city !== forecast.city) {
+  //       setCity(props.city)
+  //       axios
+  //           .get(apiURL)
+  //           .then(handleResponse)
+  //           .then(console.log("forecast updated"))
+  //           .then(setLoaded(false));
+  //   }
 
   if (loaded) {
-    console.log(forecast);
+   // console.log(forecast);
     return (
       <div className="forecast-container">
         <div className="row">

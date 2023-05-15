@@ -10,16 +10,16 @@ export default function WeatherSearch() {
   const [city, setCity] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
-  let citySearchBar = document.querySelector("#citySearchBar");
   //have to have another var to display city with res bc city search input updates value onChange
   const [cityOnScreen, setCityOnScreen] = useState("");
-  let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
+  //open weather key
+  // let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
   //shecodes apikey
-  // let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
+  let apiKey = "cf61231c3388f198372145b0edb72254";
   let units = "imperial";
-  //full apiURL with city, units, and unique key
   //shecodes apiurl
   // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
+  //open weather api
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   //start funcs
