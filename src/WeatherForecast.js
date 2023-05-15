@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
   //use state vars
@@ -20,18 +21,14 @@ export default function WeatherForecast(props) {
       <div className="forecast-container">
         <div className="row">
           <div className="col-2 day-2">
-            <img
-              src={forecast.daily[0].condition.icon_url}
-              alt={forecast.daily[0].condition.icon}
-            />
-            {forecast.daily[0].temperature.minimum}°|
-            {forecast.daily[0].temperature.minimum}°
+            <WeatherForecastDay forecast={forecast.daily[0]} />
+            <WeatherForecastDay forecast={forecast.daily[1]} />
+            <WeatherForecastDay forecast={forecast.daily[2]} />
+            <WeatherForecastDay forecast={forecast.daily[3]} />
+            <WeatherForecastDay forecast={forecast.daily[4]} />
+            <WeatherForecastDay forecast={forecast.daily[5]} />
+            <WeatherForecastDay forecast={forecast.daily[6]} />
           </div>
-          <div className="col-2 day-3">Thu Icon 18|24</div>
-          <div className="col-2 day-4">Thu Icon 18|24</div>
-          <div className="col-2 day-5">Thu Icon 18|24</div>
-          <div className="col-2 day-6">Thu Icon 18|24</div>
-          <div className="col-2 day-7">Thu Icon 18|24</div>
         </div>
       </div>
     );
