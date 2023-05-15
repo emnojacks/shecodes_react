@@ -8,11 +8,6 @@ export default function WeatherForecast(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
   console.log(props);
-  let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
-  let units = "imperial";
-  let city = props.city;
-  //shecodes apiurl
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
 
   useEffect(() => {
     setLoaded(false);
@@ -47,6 +42,13 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
+    // old shecodes
+    //    let apiKey = "9c49b3864t10591580bb709ef0f84oa3";
+    let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
+    let units = "imperial";
+    let city = props.city;
+    //shecodes apiurl
+    let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
     axios
       .get(apiURL)
       .then(handleResponse)

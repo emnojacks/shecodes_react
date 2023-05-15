@@ -12,15 +12,6 @@ export default function WeatherSearch() {
   const [weather, setWeather] = useState({});
   //have to have another var to display city with res bc city search input updates value onChange
   const [cityOnScreen, setCityOnScreen] = useState("");
-  //open weather key
-  // let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
-  //shecodes apikey
-  let apiKey = "cf61231c3388f198372145b0edb72254";
-  let units = "imperial";
-  //shecodes apiurl
-  // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
-  //open weather api
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   //start funcs
 
@@ -29,6 +20,13 @@ export default function WeatherSearch() {
   }
 
   function handleSubmit(e) {
+    //open weather key from shecodes
+    let apiKey = "311f1f45fee82242ab4086372ab360f5";
+    let units = "imperial";
+    //shecodes apiurl
+    // let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`
+    //open weather api
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
     e.preventDefault();
     axios.get(apiURL).then(displayWeather);
   }
